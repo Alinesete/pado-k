@@ -33,8 +33,6 @@ export class ProdutosComponent implements OnInit {
   ) {
     this.produtos = new Array<any>();
 
-
-
    this.readProdutos();
    this.readProdutos().subscribe((data) => {
     this.produtos = data.map((e) => {
@@ -57,13 +55,32 @@ export class ProdutosComponent implements OnInit {
    }
 
    public deleteProduto(id){
+     console.log(id);
      this.db.collection('produtos').doc(id).delete();
+   }
+
+   public updateProduto(produto){
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      data: { nomeProduto: produto.nomeProduto,
+      precoProduto: produto.precoProduto,
+      descProduto: produto.descProduto,
+      id: produto.id,
+    },
+
+      width: '400px',
+    });
    }
 
 
 
    openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      data: {
+        nomeProduto: '',
+        precoProduto: '',
+        descProduto: '',
+        id: '',
+      },
       width: '400px',
     });
 
@@ -93,6 +110,7 @@ export class DialogOverviewExampleDialog {
   public precoProduto: string;
   public descProduto: string;
   public imgProduto: string;
+  public id: string;
 
   task: AngularFireUploadTask;
   percentage: Observable<number>;
@@ -101,7 +119,23 @@ export class DialogOverviewExampleDialog {
     private db: AngularFirestore,
     private storage: AngularFireStorage,
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: 
+    {
+      nomeProduto: string,
+      precoProduto: string,
+      descProduto: string,
+      id: string,
+    
+    }
+    ) {
+
+this.nomeProduto = this.data.nomeProduto;
+this.precoProduto = this.data.precoProduto;
+this.descProduto = this.data.descProduto;
+this.id = this.data.id;
+
+
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -116,10 +150,18 @@ export class DialogOverviewExampleDialog {
       imgProduto: this.saveFileData,
       id: date
     }
+    if(this.id == undefined || this.id == ''){
+      this.db.collection("produtos").doc(date).set(produto);
+      this.dialogRef.close();
+    } else {
+      this.db.collection("produtos").doc(this.id).update(produto);
+      this.dialogRef.close();
+    }
 
-    this.db.collection("produtos").doc(date).set(produto);
-    this.dialogRef.close();
+
   }
+
+
 
 
 
