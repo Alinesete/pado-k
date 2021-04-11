@@ -14,19 +14,13 @@
 </mat-toolbar>
 
 
-<mat-sidenav-container>
+<mat-sidenav-container style="height: 100%;">
     <mat-sidenav #sidenav style="width: 200px;">
         <mat-nav-list (click)="sidenav.toggle()">
             <a mat-list-item [routerLink]="'/produtos'"> <span class="material-icons">
                 dashboard_customize
                 </span> &nbsp; Produtos </a>
-
-
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
-        <div style="height: 88vh;">
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>
+    <router-outlet></router-outlet>
 </mat-sidenav-container>

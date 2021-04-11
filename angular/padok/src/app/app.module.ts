@@ -48,16 +48,34 @@ import { MatTableModule } from '@angular/material/table';
 import { PagesModule } from './pages/pages.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { DialogOverviewExampleDialog, ProdutosComponent } from './pages/produtos/produtos.component';
+import { initFirebaseBackend } from './authUtils';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { DropzoneConfigInterface, DropzoneModule, DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
+import { FormsModule } from '@angular/forms';
+
+initFirebaseBackend(environment.firebaseConfig);
+
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  url: 'https://httpbin.org/post',
+  maxFilesize: 5
+};
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent
+    TopBarComponent,
+    ProdutosComponent,
+    DashboardComponent,
+    DialogOverviewExampleDialog
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     CommonModule,
     MatAutocompleteModule,
@@ -94,9 +112,16 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    DropzoneModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: DROPZONE_CONFIG,
+      useValue: DEFAULT_DROPZONE_CONFIG
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

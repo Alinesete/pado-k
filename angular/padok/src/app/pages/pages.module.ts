@@ -8,13 +8,14 @@ import { ProdutosComponent } from './produtos/produtos.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, ProdutosComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
+ 
   ]
 })
 export class PagesModule { }

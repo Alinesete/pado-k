@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "padok-erp": {
+      "hosting": {
+        "padok": [
+          "padok-erp"
+        ]
+      }
+    }
+  }
+}

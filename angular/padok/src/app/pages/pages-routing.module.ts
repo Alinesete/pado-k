@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProdutosComponent } from './produtos/produtos.component';
+import { DialogOverviewExampleDialog, ProdutosComponent } from './produtos/produtos.component';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent },

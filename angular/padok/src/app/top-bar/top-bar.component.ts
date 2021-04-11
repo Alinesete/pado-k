@@ -7,11 +7,10 @@ import { Component, Inject, OnInit } from '@angular/core';
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
-  hasBackdrop: boolean;
   constructor(
     @Inject(DOCUMENT) private document: any, 
   ) { 
-    this.hasBackdrop = true
+    const hasBackdrop = true
   }
 
  
