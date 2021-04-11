@@ -45,8 +45,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { PagesModule } from './pages/pages.module';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { DialogOverviewExampleDialog, ProdutosComponent } from './pages/produtos/produtos.component';
 import { initFirebaseBackend } from './authUtils';
@@ -54,8 +52,9 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { DropzoneConfigInterface, DropzoneModule, DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-initFirebaseBackend(environment.firebaseConfig);
+initFirebaseBackend(environment.firebaseConfig); 
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -68,7 +67,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     AppComponent,
     TopBarComponent,
     ProdutosComponent,
-    DashboardComponent,
     DialogOverviewExampleDialog
     
   ],
@@ -120,8 +118,10 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     {
       provide: DROPZONE_CONFIG,
       useValue: DEFAULT_DROPZONE_CONFIG
-    },
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+    }
+      ],
+      bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+
+
