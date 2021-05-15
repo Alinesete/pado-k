@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Novo Cliente</h1>
+<div mat-dialog-content style="width: 100%;">
+    <p></p>
+    <mat-radio-group [(ngModel)]="tipoCliente">
+        <mat-radio-button value="fis" checked>Cliente Físico</mat-radio-button>
+        <mat-radio-button value="jur" >Cliente Jurídico</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Nome Completo ou Razão Social</mat-label>
+        <input [(ngModel)]="nomeCliente" matInput>
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+        <mat-label>CPF ou CNPJ</mat-label>
+        <input [(ngModel)]="regCliente" matInput>
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Telefone</mat-label>
+        <input [(ngModel)]="foneCliente" matInput>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions style="justify-content: space-between;">
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="createCliente()">Pronto</button>
+</div>

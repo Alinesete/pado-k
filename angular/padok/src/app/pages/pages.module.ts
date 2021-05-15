@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DialogOverviewExampleDialog } from './produtos/produtos.component';
+import { DialogClientes } from './clientes/clientes.component';
 
 
 

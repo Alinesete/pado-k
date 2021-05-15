@@ -47,6 +47,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { DialogOverviewExampleDialog, ProdutosComponent } from './pages/produtos/produtos.component';
+import { DialogClientes, ClientesComponent } from './pages/clientes/clientes.component';
 import { initFirebaseBackend } from './authUtils';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
@@ -67,7 +68,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     AppComponent,
     TopBarComponent,
     ProdutosComponent,
-    DialogOverviewExampleDialog
+    ClientesComponent,
+    DialogClientes,
+    DialogOverviewExampleDialog,
     
   ],
   imports: [

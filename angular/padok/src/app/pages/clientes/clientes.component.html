@@ -1,0 +1,44 @@
+<div class="content">
+    <mat-grid-list cols="5" rowHeight="4:8">
+        <mat-grid-tile>
+            <mat-card (click)="openDialog()" style="text-align: center; height: 120px; cursor: pointer;" class="example-card">
+                <span style="margin-top: 10%; font-size: 50px;" class="material-icons">
+                    add_circle_outline
+                    </span>
+                <mat-card-content>
+                    <p>
+                        Cadastrar cliente
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+
+        </mat-grid-tile>
+        <mat-grid-tile *ngFor="let cliente of clientes">
+            <mat-card class="example-card">
+                <mat-card-title>
+                    <p style="color: blue;">
+                        {{cliente.nomeCliente}}
+                    </p>
+                </mat-card-title>
+                <mat-card-content>
+                    <p>
+                        {{cliente.regCliente}}
+                    </p>
+                </mat-card-content>
+                <mat-card-content>
+                    <p>
+                        {{cliente.foneCliente}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="warn" (click)="deleteCliente(cliente.id)">Excluir</button>
+                    <button mat-raised-button color="primary" (click)="updateCliente(cliente)">Editar</button>
+                </mat-card-actions>
+            </mat-card>
+
+
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
