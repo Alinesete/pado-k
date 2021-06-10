@@ -5,8 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiModule } from '../shared/ui/ui.module';
 import { WidgetModule } from '../shared/widget/widget.module';
 
-import { PagesRoutingModule } from './pages-routing.module';
-
 import { NgbNavModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -21,14 +19,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ChatComponent } from './chat/chat.component';
 import { EcommerceModule } from './ecommerce/ecommerce.module';
-import { KanbanComponent } from './kanban/kanban.component';
 import { EmailModule } from './email/email.module';
 import { UIModule } from './ui/ui.module';
-import { IconsModule } from './icons/icons.module';
 import { ChartModule } from './chart/chart.module';
 import { FormModule } from './form/form.module';
 import { TablesModule } from './tables/tables.module';
-import { MapsModule } from './maps/maps.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 
@@ -73,12 +68,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { FornecedoresComponent } from './fornecedores/fornecedores.component';
-import { MateriaisComponent } from './materiais/materiais.component';
 import { HistFuncionariosComponent } from './hist-funcionarios/hist-funcionarios.component';
 import { HistFornecedoresComponent } from './hist-fornecedores/hist-fornecedores.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ProdutosComponent } from './produtos/produtos.component';
-import { DropzoneConfigInterface, DropzoneModule } from 'ngx-dropzone-wrapper';
+import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { PagesRoutingModule } from './pages-routing.module';
+import { MateriaisComponent } from './materiais/materiais.component';
 
 
 
@@ -87,22 +83,16 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 0.3
 };
-const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
-  // Change this to your upload POST address:
-  url: 'https://httpbin.org/post',
-  maxFilesize: 5
-};
 
 @NgModule({
-  declarations: [DashboardComponent, CalendarComponent, ChatComponent, KanbanComponent, FuncionariosComponent, FornecedoresComponent, MateriaisComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent],
+  declarations: [DashboardComponent, CalendarComponent, MateriaisComponent, ChatComponent, FuncionariosComponent, FornecedoresComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DropzoneModule,
-    PagesRoutingModule,
     UiModule,
     UIModule,
+    PagesRoutingModule,
     Ng2SearchPipeModule,
     NgbNavModule,
     NgbDropdownModule,
@@ -112,14 +102,13 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     DndModule,
     FullCalendarModule,
     EcommerceModule, EmailModule,
-    IconsModule,
     ChartModule,
     FormModule,
     TablesModule,
-    MapsModule,
     LeafletModule,
     WidgetModule,
     MatAutocompleteModule,
+    DropzoneModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatFormFieldModule,
