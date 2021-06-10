@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { latLng, tileLayer } from 'leaflet';
-
-import { ChartType, Stat, Chat, Transaction } from './dashboard.model';
-
-import { statData, revenueChart, salesAnalytics, sparklineEarning, sparklineMonthly, chatData, transactions } from './data';
-
+import { AngularFirestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,83 +10,75 @@ import { statData, revenueChart, salesAnalytics, sparklineEarning, sparklineMont
  * Dashboard Component
  */
 export class DashboardComponent implements OnInit {
-
-  term: any;
-  chatData: Chat[];
-  transactions: Transaction[];
-  statData: Stat[];
-
-  constructor(public formBuilder: FormBuilder) {
-  }
-
-  // bread crumb items
-  breadCrumbItems: Array<{}>;
-
-  revenueChart: ChartType;
-  salesAnalytics: ChartType;
-  sparklineEarning: ChartType;
-  sparklineMonthly: ChartType;
-
-  // Form submit
-  chatSubmit: boolean;
-
-  formData: FormGroup;
+  public funcionarios: Array<any>;
+  public clientes: Array<any>;
+  public produtos: Array<any>;
+  public vendas: Array<any>;
 
 
-  options = {
-    layers: [
-      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
-    ],
-    zoom: 6,
-    center: latLng(46.879966, -121.726909)
-  };
+  constructor(
+    private db: AngularFirestore,
+  ) {
+    this.funcionarios = new Array<any>();
+    this.clientes = new Array<any>();
+    this.produtos = new Array<any>();
+    this.vendas = new Array<any>();
+    this.buscarfuncionarios();
+    this.buscarclientes();
+    this.buscarprodutos();
+    this.buscarvendas();
 
-  ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'padok' }, { label: 'Dashboard', active: true }];
-    this.formData = this.formBuilder.group({
-      message: ['', [Validators.required]],
+    this.buscarfuncionarios().subscribe((data) => {
+      this.funcionarios = data.map((e) => {
+        return {
+          id: e.payload.doc.data()['id'],
+        };
+      })
     });
-    this._fetchData();
+
+    this.buscarclientes().subscribe((data) => {
+      this.clientes = data.map((e) => {
+        return {
+          id: e.payload.doc.data()['id'],
+        };
+      })
+    });
+
+    
+
+    this.buscarprodutos().subscribe((data) => {
+      this.produtos = data.map((e) => {
+        return {
+          id: e.payload.doc.data()['id'],
+        };
+      })
+    });
+
+    this.buscarvendas().subscribe((data) => {
+      this.vendas = data.map((e) => {
+        return {
+          id: e.payload.doc.data()['id'],
+        };
+      })
+    });
   }
 
-  private _fetchData() {
-    this.revenueChart = revenueChart;
-    this.salesAnalytics = salesAnalytics;
-    this.sparklineEarning = sparklineEarning;
-    this.sparklineMonthly = sparklineMonthly;
-    this.chatData = chatData;
-    this.transactions = transactions;
-    this.statData = statData;
+  buscarfuncionarios() {
+    return this.db.collection("funcionarios").snapshotChanges();
   }
 
-  /**
-   * Returns form
-   */
-  get form() {
-    return this.formData.controls;
+  buscarclientes() {
+    return this.db.collection("clientes").snapshotChanges();
   }
 
-  /**
-   * Save the message in chat
-   */
-  messageSave() {
-    const message = this.formData.get('message').value;
-    const currentDate = new Date();
-    if (this.formData.valid && message) {
-      // Message Push in Chat
-      this.chatData.push({
-        align: 'right',
-        name: 'Ricky Clark',
-        message,
-        time: currentDate.getHours() + ':' + currentDate.getMinutes()
-      });
-
-      // Set Form Data Reset
-      this.formData = this.formBuilder.group({
-        message: null
-      });
-    }
-
-    this.chatSubmit = true;
+  buscarprodutos() {
+    return this.db.collection("produtos").snapshotChanges();
   }
+
+  buscarvendas() {
+    return this.db.collection("vendas").snapshotChanges();
+  }
+  ngOnInit(): void {
+  }
+
 }
