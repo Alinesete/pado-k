@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="justify-content: center; justify-items: center; text-align: center; border-radius: 20px;">
+                <h3 class="card-title">Cadastro de Funcionário</h3>
+                <div class="row">
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nome Completo</mat-label>
+                            <input [(ngModel)]="nomeFun" matInput placeholder="Junior Souza">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset; margin: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>CPF</mat-label>
+                            <input [(ngModel)]="cpfFun" matInput placeholder="XXX-XXXX-XXX-XX">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Telefone</mat-label>
+                            <input [(ngModel)]="telFun" matInput placeholder="(XX)-XXXXX-XXXX">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Endereço</mat-label>
+                            <input [(ngModel)]="endFun" matInput placeholder="Rua 18 Nº453 A">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Função</mat-label>
+                            <input [(ngModel)]="funcFun" matInput placeholder="Padeiro">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Salário</mat-label>
+                            <input [(ngModel)]="salFun" matInput placeholder="R$3800,00">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button type="button" (click)="gravarFuncionario()" class="btn btn-success">Gravar</button>
+            </div>
+
+            <div class="card" style="border-radius: 20px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">TELEFONE</th>
+                            <th scope="col">FUNÇÃO</th>
+                            <th scope="col">SALÁRIO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let fun of funcionarios; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{fun.nomeFuncionario}}</td>
+                            <td>{{fun.cpfFuncionario}}</td>
+                            <td>{{fun.foneFuncionario}}</td>
+                            <td>{{fun.funFuncionario}}</td>
+                            <td>{{fun.salFuncionario}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

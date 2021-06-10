@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="justify-content: center; justify-items: center; text-align: center; border-radius: 20px;">
+                <h3 class="card-title">Cadastro de Materais</h3>
+                <div class="row">
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nome do Material</mat-label>
+                            <input [(ngModel)]="nomeMaterial" matInput placeholder="Farinha">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset; margin: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Descrição do Material</mat-label>
+                            <input [(ngModel)]="descMaterial" matInput placeholder="Base para fazer massa">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Quantidade de Material</mat-label>
+                            <input [(ngModel)]="qtdMaterial" matInput placeholder="77">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button type="button" (click)="gravarMateriais()" class="btn btn-success">Gravar</button>
+            </div>
+
+            <div class="card" style="border-radius: 20px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">Qtd. Material</th>
+                            <th scope="col">Descrição do Material</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let for of materiais; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{for.nomeMaterial}}</td>
+                            <td>{{for.qtdMaterial}}</td>
+                            <td>{{for.descMaterial}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

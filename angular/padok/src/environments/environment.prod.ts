@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  defaultauth: 'firebase',
+  defaultauth: 'fackbackend',
   firebaseConfig: {
     apiKey: "AIzaSyD2-QvbD46IkFSERXz_jgQmougB5v7N89A",
     authDomain: "padok-erp.firebaseapp.com",

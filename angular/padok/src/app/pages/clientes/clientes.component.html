@@ -1,44 +1,60 @@
-<div class="content">
-    <mat-grid-list cols="5" rowHeight="4:8">
-        <mat-grid-tile>
-            <mat-card (click)="openDialog()" style="text-align: center; height: 120px; cursor: pointer;" class="example-card">
-                <span style="margin-top: 10%; font-size: 50px;" class="material-icons">
-                    add_circle_outline
-                    </span>
-                <mat-card-content>
-                    <p>
-                        Cadastrar cliente
-                    </p>
-                </mat-card-content>
-            </mat-card>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="justify-content: center; justify-items: center; text-align: center; border-radius: 20px;">
+                <h3 class="card-title">Cadastro de Clientes</h3>
+                <div class="row">
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nome Completo</mat-label>
+                            <input [(ngModel)]="nomeCliente" matInput placeholder="Junior Souza">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset; margin: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>CPF/CNPJ</mat-label>
+                            <input [(ngModel)]="regCliente" matInput placeholder="XXX-XXXX-XXX-XX">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Telefone</mat-label>
+                            <input [(ngModel)]="foneCliente" matInput placeholder="(XX)-XXXXX-XXXX">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tipo</mat-label>
+                            <input [(ngModel)]="tipoCliente" matInput placeholder="Fisico">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button type="button" (click)="gravarClientes()" class="btn btn-success">Gravar</button>
+            </div>
 
+            <div class="card" style="border-radius: 20px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">CPF/CNPJ</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let fun of clientes; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{fun.nomeCliente}}</td>
+                            <td>{{fun.regCliente}}</td>
+                            <td>{{fun.foneCliente}}</td>
+                            <td>{{fun.tipoCliente}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-        </mat-grid-tile>
-        <mat-grid-tile *ngFor="let cliente of clientes">
-            <mat-card class="example-card">
-                <mat-card-title>
-                    <p style="color: blue;">
-                        {{cliente.nomeCliente}}
-                    </p>
-                </mat-card-title>
-                <mat-card-content>
-                    <p>
-                        {{cliente.regCliente}}
-                    </p>
-                </mat-card-content>
-                <mat-card-content>
-                    <p>
-                        {{cliente.foneCliente}}
-                    </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button color="warn" (click)="deleteCliente(cliente.id)">Excluir</button>
-                    <button mat-raised-button color="primary" (click)="updateCliente(cliente)">Editar</button>
-                </mat-card-actions>
-            </mat-card>
-
-
-
-        </mat-grid-tile>
-    </mat-grid-list>
 </div>

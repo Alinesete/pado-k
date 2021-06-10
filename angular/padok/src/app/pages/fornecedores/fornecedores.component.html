@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="justify-content: center; justify-items: center; text-align: center; border-radius: 20px;">
+                <h3 class="card-title">Cadastro de Fornecedores</h3>
+                <div class="row">
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nome do Fornecedor</mat-label>
+                            <input [(ngModel)]="nomeFornecedor" matInput placeholder="LIA CRYSTAL">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset; margin: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>CNPJ</mat-label>
+                            <input [(ngModel)]="regFornecedor" matInput placeholder="XXX-XXXX-XX/XXXX-XX">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Telefone</mat-label>
+                            <input [(ngModel)]="foneFornecedor" matInput placeholder="(XX)-XXXXX-XXXX">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Endereço</mat-label>
+                            <input [(ngModel)]="endFornecedor" matInput placeholder="Rua 18 Nº453 A">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button type="button" (click)="gravarFuncionario()" class="btn btn-success">Gravar</button>
+            </div>
+
+            <div class="card" style="border-radius: 20px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">CNPJ</th>
+                            <th scope="col">TELEFONE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let for of fornecedores; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{for.nomeFornecedor}}</td>
+                            <td>{{for.regFornecedor}}</td>
+                            <td>{{for.foneFornecedor}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
