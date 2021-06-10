@@ -18,7 +18,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ChatComponent } from './chat/chat.component';
-import { EcommerceModule } from './ecommerce/ecommerce.module';
 import { EmailModule } from './email/email.module';
 import { UIModule } from './ui/ui.module';
 import { ChartModule } from './chart/chart.module';
@@ -101,7 +100,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     DndModule,
     FullCalendarModule,
-    EcommerceModule, EmailModule,
+    EmailModule,
     ChartModule,
     FormModule,
     TablesModule,
