@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="justify-content: center; justify-items: center; text-align: center; border-radius: 20px;">
+                <h3 class="card-title">Cadastro de Produtos</h3>
+                <div class="row">
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nome do Produto</mat-label>
+                            <input [(ngModel)]="nomeProduto" matInput placeholder="Pão de Queijo">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset; margin: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Descrição do Produto</mat-label>
+                            <input [(ngModel)]="descProduto" matInput placeholder="Não contem Gluten">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Preço do Produto</mat-label>
+                            <input [(ngModel)]="precoProduto" matInput placeholder="2,50">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Quantidade do Produto</mat-label>
+                            <input [(ngModel)]="qtdProduto" matInput placeholder="4">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-3" style="padding: unset;">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <dropzone (success)="onUploadSuccess($event, 2)" class="dropzone" message="Clique aqui ou arraste e solte o arquivo">
+
+                        </dropzone>
+                    </div>
+                </div>
+                <button type="button" (click)="gravarProduto()" class="btn btn-success">Gravar</button>
+            </div>
+
+            <div class="card" style="border-radius: 20px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">FOTO</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let fun of produtos; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <th scope="row"><img [src]="fun.imgProduto" class="avatar"></th>
+                            <td>{{fun.nomeProduto}}</td>
+                            <td>{{fun.precoProduto}}</td>
+                            <td>{{fun.qtdProduto}}</td>
+                            <td>{{fun.descProduto}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -31,8 +31,8 @@ export const MENU: MenuItem[] = [
             },
             {
                 id: 8,
-                label: 'Origem',
-                link: '/materiais',
+                label: 'Produtos',
+                link: '/produtos',
                 parentId: 5
             },
             {

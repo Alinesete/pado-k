@@ -11,6 +11,7 @@ import { MateriaisComponent } from './materiais/materiais.component';
 import { HistFornecedoresComponent } from './hist-fornecedores/hist-fornecedores.component';
 import { HistFuncionariosComponent } from './hist-funcionarios/hist-funcionarios.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { ProdutosComponent } from './produtos/produtos.component';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
     { path: 'funcionarios', component: FuncionariosComponent },
     { path: 'fornecedores', component: FornecedoresComponent },
     { path: 'materiais', component: MateriaisComponent },
+    { path: 'produtos', component: ProdutosComponent },
     { path: 'clientes', component: ClientesComponent },
     { path: 'histFornecedores', component: HistFornecedoresComponent },
     { path: 'histFuncionarios', component: HistFuncionariosComponent },

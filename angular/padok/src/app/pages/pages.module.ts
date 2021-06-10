@@ -77,6 +77,8 @@ import { MateriaisComponent } from './materiais/materiais.component';
 import { HistFuncionariosComponent } from './hist-funcionarios/hist-funcionarios.component';
 import { HistFornecedoresComponent } from './hist-fornecedores/hist-fornecedores.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { ProdutosComponent } from './produtos/produtos.component';
+import { DropzoneConfigInterface, DropzoneModule } from 'ngx-dropzone-wrapper';
 
 
 
@@ -85,13 +87,19 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 0.3
 };
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  url: 'https://httpbin.org/post',
+  maxFilesize: 5
+};
 
 @NgModule({
-  declarations: [DashboardComponent, CalendarComponent, ChatComponent, KanbanComponent, FuncionariosComponent, FornecedoresComponent, MateriaisComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent],
+  declarations: [DashboardComponent, CalendarComponent, ChatComponent, KanbanComponent, FuncionariosComponent, FornecedoresComponent, MateriaisComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    DropzoneModule,
     PagesRoutingModule,
     UiModule,
     UIModule,
