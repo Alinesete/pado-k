@@ -13,7 +13,6 @@ import { MateriaisComponent } from './materiais/materiais.component';
 const routes: Routes = [
     { path: '', component: DashboardComponent },
     { path: 'calendar', component: CalendarComponent },
-    { path: 'pages', loadChildren: () => import('./utility/utility.module').then(m => m.UtilityModule) },
     { path: 'funcionarios', component: FuncionariosComponent },
     { path: 'fornecedores', component: FornecedoresComponent },
     { path: 'produtos', component: ProdutosComponent },

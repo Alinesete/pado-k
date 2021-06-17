@@ -19,10 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ChatComponent } from './chat/chat.component';
 import { EmailModule } from './email/email.module';
-import { UIModule } from './ui/ui.module';
 import { ChartModule } from './chart/chart.module';
 import { FormModule } from './form/form.module';
-import { TablesModule } from './tables/tables.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 
@@ -89,8 +87,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    UiModule,
-    UIModule,
     PagesRoutingModule,
     Ng2SearchPipeModule,
     NgbNavModule,
@@ -103,7 +99,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     EmailModule,
     ChartModule,
     FormModule,
-    TablesModule,
     LeafletModule,
     WidgetModule,
     MatAutocompleteModule,
