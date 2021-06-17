@@ -11,6 +11,8 @@ export class MateriaisComponent implements OnInit {
   public descMaterial: string;
   public qtdMaterial: string;
   public materiais: Array<any>;
+  public date: number;
+  public selecionado: any;
 
   constructor(
     private db: AngularFirestore,
@@ -22,23 +24,39 @@ export class MateriaisComponent implements OnInit {
         return {
           nomeMaterial: e.payload.doc.data()['nomeMaterial'],
           descMaterial: e.payload.doc.data()['descMaterial'],
-          qtdMaterial: e.payload.doc.data()['qtdMaterial'],
+          qtdMaterial: e.payload.doc.data()['qtdMaterial'], 
+          id: e.payload.doc.data()['id'], 
         };
       })
     });
+    this.date = Date.now();
    }
 
+   deletar(id){
+this.db.collection("materiais").doc(id).delete();
+   }
+
+   editar(id, select){
+     select = this.selecionado;
+id.nomeMaterial = this.nomeMaterial;
+id.descMaterial = this.descMaterial;
+id.qtdMaterial = this.qtdMaterial;
+
+
+   }
+
+
   gravarMateriais(){
-    var date = Date.now();
+    
 
     var newMaterial = {
       atvFornecedor: true,
       nomeMaterial: this.nomeMaterial,
       descMaterial: this.descMaterial,
       qtdMaterial: this.qtdMaterial,
-      id: date.toString()
+      id: this.date.toString()
     }
-    this.db.collection("materiais").doc(date.toString()).set(newMaterial);
+    this.db.collection("materiais").doc(this.date.toString()).set(newMaterial);
 
     Swal.fire({
       title: 'Tudo certo!',

@@ -52,6 +52,10 @@ export class ProdutosComponent implements OnInit {
   }
 
 
+  deletar(id){
+    this.db.collection("produtos").doc(id).delete()
+  }
+
 
   getProdutos(){
     return this.db.collection("produtos").snapshotChanges();
