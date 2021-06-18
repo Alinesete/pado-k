@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { UiModule } from '../shared/ui/ui.module';
 import { WidgetModule } from '../shared/widget/widget.module';
 
 import { NgbNavModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,9 +16,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { ChatComponent } from './chat/chat.component';
 import { EmailModule } from './email/email.module';
-import { ChartModule } from './chart/chart.module';
 import { FormModule } from './form/form.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
@@ -82,7 +79,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, CalendarComponent, MateriaisComponent, ChatComponent, FuncionariosComponent, FornecedoresComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent],
+  declarations: [DashboardComponent, CalendarComponent, MateriaisComponent, FuncionariosComponent, FornecedoresComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -97,7 +94,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DndModule,
     FullCalendarModule,
     EmailModule,
-    ChartModule,
     FormModule,
     LeafletModule,
     WidgetModule,
