@@ -9,6 +9,7 @@ import { HistFuncionariosComponent } from './hist-funcionarios/hist-funcionarios
 import { ClientesComponent } from './clientes/clientes.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { MateriaisComponent } from './materiais/materiais.component';
+import { VendasComponent } from './vendas/vendas.component';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'clientes', component: ClientesComponent },
     { path: 'histFornecedores', component: HistFornecedoresComponent },
     { path: 'histFuncionarios', component: HistFuncionariosComponent },
+    { path: 'vendas', component: VendasComponent },
 ];
 
 @NgModule({

@@ -38,7 +38,7 @@ export const MENU: MenuItem[] = [
             {
                 id: 9,
                 label: 'Vendas',
-                link: '/ecommerce/customers',
+                link: '/vendas',
                 parentId: 5
             }
         ]

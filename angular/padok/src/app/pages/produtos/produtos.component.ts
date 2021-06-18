@@ -14,7 +14,7 @@ export class ProdutosComponent implements OnInit {
   public nomeProduto: string;
   public descProduto: string;
   public precoProduto: string;
-  public qtdProduto: string;
+  public qtdProduto: number;
   public produtos: Array<any>;
   public img: any;
   public fileFormat: any;

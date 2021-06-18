@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col">
+        <div class="card" style="background-color: #dfdfdf;">
+            <mat-form-field class="example-full-width" style="width: 95%;  margin-left: 3%; margin-top: 2%;">
+                <mat-label>Pesquisar</mat-label>
+                <input (ngModelChange)="setFilteredItems()" [(ngModel)]="searchTerm" type="text" matInput placeholder="Pesquisar">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let produto of produtosAux; let i = index">
+                    <div class="card produtos" (click)="adcLista(produto, produto.precoProduto)" style="height: 200px !important; margin: unset; margin-top: 3%;">
+                        <img [src]="produto.imgProduto" style="height: 100px;" class="card-img-top">
+                        <h5 style="margin-top: unset; margin-bottom: unset; padding-top: unset; padding-bottom: unset;" class="card-title"><b>{{produto.nomeProduto}}</b></h5>
+                        <h3 style="margin-top: unset; margin-bottom: unset; padding-top: unset; padding-bottom: unset;" class="card-text">{{produto.descProduto}}</h3>
+                        <h3 style="margin-top: unset; margin-bottom: unset; padding-top: unset; padding-bottom: unset;">Preço <span class="badge badge-success">{{produto.precoProduto | currency:'BRL':true:'1.2-2'}}</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+
+            <div class="card-content">
+                <div class="row" style="margin-top: 3%; margin-left: 2%;">
+                    <div class="col-lg-6" style="margin-bottom: unset; padding-bottom: unset;">
+                        <h1 class="card-title">Total</h1>
+                    </div>
+                    <div class="col-lg-6" style="margin-bottom: unset; padding-bottom: unset;">
+                        <h2>{{totalPrecoProdutos | currency:'BRL':true:'1.2-2'}}</h2>
+                    </div>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">DESCRIÇÃO</th>
+                            <th scope="col">PREÇO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let produtos of totalProdutos; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{produtos.nomeProduto}}</td>
+                            <td>{{produtos.descProduto}}</td>
+                            <td>{{produtos.precoProduto | currency:'BRL':true:'1.2-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!--   <h3 *ngFor="let produto of totalProdutos" class="card-title">{{produto.nomeProduto}}</h3> -->
+        </div>
+    </div>
+</div>

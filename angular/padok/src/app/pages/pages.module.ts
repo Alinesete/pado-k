@@ -69,6 +69,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MateriaisComponent } from './materiais/materiais.component';
+import { VendasComponent } from './vendas/vendas.component';
 
 
 
@@ -79,7 +80,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, CalendarComponent, MateriaisComponent, FuncionariosComponent, FornecedoresComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent],
+  declarations: [DashboardComponent, CalendarComponent, MateriaisComponent, FuncionariosComponent, FornecedoresComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent, VendasComponent],
   imports: [
     CommonModule,
     FormsModule,
