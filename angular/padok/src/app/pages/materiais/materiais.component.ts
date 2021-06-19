@@ -78,6 +78,8 @@ export class MateriaisComponent implements OnInit {
     this.novoQtdMaterial = material.qtdMaterial;
     this.novoId = material.id;
 
+    console.log(material)
+
    
     this.modalService.open(centerDataModal, { centered: true });
   }

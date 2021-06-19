@@ -60,10 +60,10 @@
                             <th scope="row">{{i + 1}}</th>
                             <th scope="row"><img [src]="fun.imgProduto" class="avatar"></th>
                             <td>{{fun.nomeProduto}}</td>
-                            <td>{{fun.precoProduto}}</td>
+                            <td>{{fun.precoProduto | currency:'BRL':true:'1.2-2'}}</td>
                             <td>{{fun.qtdProduto}}</td>
                             <td>{{fun.descProduto}}</td>
-                            <td><i style="color: #0033c0; cursor: pointer;" class="fas fa-pen"></i> &nbsp; &nbsp; <i (click)="deletar(fun.id)" style="color: #a50000;  cursor: pointer;" class="far fa-times-circle"></i></td>
+                            <td><i style="color: #0033c0; cursor: pointer;" (click)="modalMenu(centerDataModal, fun)" class="fas fa-pen"></i> &nbsp; &nbsp; <i (click)="deletar(fun.id)" style="color: #a50000;  cursor: pointer;" class="far fa-times-circle"></i></td>
                         </tr>
                     </tbody>
                 </table>
@@ -72,3 +72,39 @@
     </div>
 
 </div>
+
+
+
+<ng-template #centerDataModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">Editar Material</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-hidden="true">×</button>
+    </div>
+
+
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nome do Produto</label>
+            <input type="text" [(ngModel)]="novoNomeProduto" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Descrição</label>
+            <input type="text" [(ngModel)]="novoDescProduto" class="form-control" id="exampleInputEmail12" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Preço do Produto</label>
+            <input type="text" [(ngModel)]="novoPrecoProduto" class="form-control" id="exampleInputEmail13" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Qtd desse Produto</label>
+            <input type="text" [(ngModel)]="novoQtdProduto" class="form-control" id="exampleInputEmail14" aria-describedby="emailHelp">
+        </div>
+
+
+    </div>
+    <button (click)="EditarProduto()" style="width: 100%;" type="submit" class="btn btn-success">Atualizar</button>
+</ng-template>

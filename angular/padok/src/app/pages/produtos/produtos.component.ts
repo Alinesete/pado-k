@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { tap, finalize } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -23,6 +24,16 @@ export class ProdutosComponent implements OnInit {
   public file: any;
   public saveFileData: any;
   public config: any;
+
+
+  public novoDescProduto: String;
+  public novoNomeProduto: String;
+  public novoPrecoProduto: String;
+  public novoQtdProduto: String;
+  public novoImgProduto: String;
+  public novoId: string;
+
+
   public users: Array<any>;
   task: AngularFireUploadTask;
   percentage: Observable<number>;
@@ -32,6 +43,7 @@ export class ProdutosComponent implements OnInit {
   constructor(
     private db: AngularFirestore,
     private storage: AngularFireStorage,
+    private modalService: NgbModal
   ) { 
     this.produtos = new Array<any>();
 
@@ -51,10 +63,59 @@ export class ProdutosComponent implements OnInit {
     });
   }
 
+  public modalMenu(centerDataModal: any, produto) {
+
+    this.novoDescProduto =  produto.descProduto;
+    this.novoNomeProduto= produto.nomeProduto;
+    this.novoQtdProduto = produto.qtdProduto;
+    this.novoPrecoProduto = produto.precoProduto;
+    this.novoImgProduto = produto.imgProduto;
+    this.novoId = produto.id;
+
+
+   
+    this.modalService.open(centerDataModal, { centered: true });
+  }
+
 
   deletar(id){
     this.db.collection("produtos").doc(id).delete()
   }
+
+
+  EditarProduto(){
+    var newMaterial = {
+      descProduto: this.novoDescProduto,
+      nomeProduto: this.novoNomeProduto,
+      precoProduto: this.novoPrecoProduto,
+      imgProduto: this.novoImgProduto,
+      qtdProduto: this.novoQtdProduto,
+      id: this.novoId
+    }
+
+
+    this.db.collection("produtos").doc(this.novoId).set(newMaterial);
+    this.novoDescProduto =  "";
+    this.novoNomeProduto = "";
+    this.novoPrecoProduto = "";
+    this.novoQtdProduto = "";
+    this.novoImgProduto = "";
+    this.novoId = "";
+
+
+
+    Swal.fire({
+      title: 'Tudo certo!',
+      text: 'Produto atualizado com sucesso!',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonColor: '#5438dc',
+    });
+    this.modalService.dismissAll();
+  }
+  
+
+
 
 
   getProdutos(){
