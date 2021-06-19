@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vendas',
@@ -13,13 +15,28 @@ export class VendasComponent implements OnInit {
   public totalPrecoProdutos: number;
   public searchTerm : String;
 
+  public nomeFun: String;
+  public nomeCliente: String;
+  public formaPgtoVenda: String;
+  public data: string;
+
   constructor(
     private db: AngularFirestore,
+    private modalService: NgbModal
   ) { 
     this.produtos = new Array<any>();
     this.totalPrecoProdutos = 0.0;
     this.produtosAux = new Array<any>();
     this.totalProdutos = new Array<any>();
+
+    var data = new Date(),
+    dia = data.getDate().toString(),
+    diaF = (dia.length == 1) ? '0' + dia : dia,
+    mes = (data.getMonth() + 1).toString(),
+    mesF = (mes.length == 1) ? '0' + mes : mes,
+    anoF = data.getFullYear();
+    this.data = diaF + "/" + mesF + "/" + anoF,
+
 
     this.getProdutos();
     this.getProdutos().subscribe((data) => { 
@@ -44,12 +61,45 @@ export class VendasComponent implements OnInit {
   }
 
 
+
+  vender(centerDataModal: any) {
+    this.modalService.open(centerDataModal, { centered: true });
+  }
+
+
+
   getProdutos(){
     return this.db.collection("produtos").snapshotChanges();
   }
 
   setFilteredItems() {
     this.produtosAux = this.filterItems(this.searchTerm);
+  }
+
+  finalizarCompra(){
+    var date = Date.now();
+    var compra = {
+      dataVenda : this.data,
+      formaPgtoVenda: this.formaPgtoVenda,
+      nomeCliente: this.nomeCliente,
+      nomeFuncionario: this.nomeFun,
+      valorFinalVenda: this.totalPrecoProdutos,
+      idProduto: this.totalProdutos,
+      id: date
+    }
+    this.db.collection("vendas").doc(date.toString()).set(compra);
+    this.totalProdutos = null;
+    this.totalPrecoProdutos = 0.0
+    this.modalService.dismissAll();
+    Swal.fire({
+      title: 'Tudo certo!',
+      text: 'Venda finalizada com sucesso!',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonColor: '#5438dc',
+    });
+   
+
   }
 
   filterItems(searchTerm) {

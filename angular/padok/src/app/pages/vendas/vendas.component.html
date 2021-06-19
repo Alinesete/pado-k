@@ -20,8 +20,9 @@
     </div>
     <div class="col">
         <div class="card">
-
             <div class="card-content">
+                <button type="button" (click)="vender(centerDataModal)" class="btn btn-success">Finalizar Compra</button>
+
                 <div class="row" style="margin-top: 3%; margin-left: 2%;">
                     <div class="col-lg-6" style="margin-bottom: unset; padding-bottom: unset;">
                         <h1 class="card-title">Total</h1>
@@ -49,9 +50,49 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
-            <!--   <h3 *ngFor="let produto of totalProdutos" class="card-title">{{produto.nomeProduto}}</h3> -->
         </div>
     </div>
 </div>
+
+
+
+<ng-template #centerDataModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">Finalizar Compra</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-hidden="true">×</button>
+    </div>
+
+
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nome Funcionário</label>
+            <input type="text" [(ngModel)]="nomeFun" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nome Cliente</label>
+            <input type="text" [(ngModel)]="nomeCliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Forma de Pagamento</label>
+            <input type="text" [(ngModel)]="formaPgtoVenda" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Valor Final:</label> <br>
+            <label>{{totalPrecoProdutos | currency:'BRL':true:'1.2-2'}}</label>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Data</label> <br>
+            <label>{{data}}</label>
+        </div>
+
+
+
+    </div>
+    <button style="width: 100%;" (click)="finalizarCompra()" type="submit" class="btn btn-warning">Finalizar</button>
+</ng-template>
