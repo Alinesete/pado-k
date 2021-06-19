@@ -43,7 +43,7 @@
                             <td>{{for.nomeMaterial}}</td>
                             <td>{{for.qtdMaterial}}</td>
                             <td>{{for.descMaterial}}</td>
-                            <td><i (click)="editar(for, i)" style="color: #0033c0; cursor: pointer;" class="fas fa-pen"></i> &nbsp; &nbsp; <i (click)="deletar(for.id)" style="color: #a50000;  cursor: pointer;" class="far fa-times-circle"></i></td>
+                            <td><i style="color: #0033c0; cursor: pointer;" (click)="modalMenu(centerDataModal, for)" class="fas fa-pen"></i> &nbsp; &nbsp; <i (click)="deletar(for.id)" style="color: #a50000;  cursor: pointer;" class="far fa-times-circle"></i></td>
 
                         </tr>
                     </tbody>
@@ -53,3 +53,32 @@
     </div>
 
 </div>
+
+<ng-template #centerDataModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">Editar Material</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-hidden="true">×</button>
+    </div>
+
+
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nome do Material</label>
+            <input type="text" [(ngModel)]="novoNomeMaterial" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Descrição</label>
+            <input type="text" [(ngModel)]="novoDescMaterial" class="form-control" id="exampleInputEmail12" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Qtd desse Material</label>
+            <input type="text" [(ngModel)]="novoQtdMaterial" class="form-control" id="exampleInputEmail13" aria-describedby="emailHelp">
+        </div>
+
+
+    </div>
+    <button (click)="EditarProduto()" style="width: 100%;" type="submit" class="btn btn-success">Atualizar</button>
+</ng-template>

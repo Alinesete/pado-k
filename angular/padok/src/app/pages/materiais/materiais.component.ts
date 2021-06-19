@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-materiais',
@@ -7,15 +8,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./materiais.component.scss']
 })
 export class MateriaisComponent implements OnInit {
-  public nomeMaterial: string;
-  public descMaterial: string;
-  public qtdMaterial: string;
+  public nomeMaterial: String;
+  public descMaterial: String;
+  public qtdMaterial: String;
   public materiais: Array<any>;
   public date: number;
   public selecionado: any;
 
+  public novoNomeMaterial : String;
+  public novoDescMaterial : String;
+  public novoQtdMaterial : String;
+  public novoAtvMaterial : String;
+  public novoId : string;
+
   constructor(
     private db: AngularFirestore,
+    private modalService: NgbModal
   ) {
     this.materiais = new Array<any>();
     this.getMateriais();
@@ -32,18 +40,8 @@ export class MateriaisComponent implements OnInit {
     this.date = Date.now();
    }
 
-   deletar(id){
-this.db.collection("materiais").doc(id).delete();
-   }
+ 
 
-   editar(id, select){
-     select = this.selecionado;
-id.nomeMaterial = this.nomeMaterial;
-id.descMaterial = this.descMaterial;
-id.qtdMaterial = this.qtdMaterial;
-
-
-   }
 
 
   gravarMateriais(){
@@ -71,6 +69,54 @@ id.qtdMaterial = this.qtdMaterial;
   return this.db.collection("materiais").snapshotChanges();
   }
 
+
+
+  modalMenu(centerDataModal: any, material) {
+
+    this.novoNomeMaterial =  material.nomeMaterial;
+    this.novoDescMaterial= material.descMaterial;
+    this.novoQtdMaterial = material.qtdMaterial;
+    this.novoId = material.id;
+
+    console.log(material);
+
+
+
+   
+    this.modalService.open(centerDataModal, { centered: true });
+  }
+
+  deletar(id){
+    this.db.collection("materiais").doc(id).delete();
+  }
+
+  EditarProduto(){
+    var newMaterial = {
+      descMaterial: this.novoDescMaterial,
+      nomeMaterial: this.novoNomeMaterial,
+      qtdMaterial: this.novoQtdMaterial,
+      id: this.novoId
+    }
+
+    console.log(newMaterial);
+
+
+    this.db.collection("materiais").doc(this.novoId).set(newMaterial);
+    this.novoAtvMaterial =  "";
+    this.nomeMaterial = "";
+    this.novoDescMaterial = "";
+    this.novoQtdMaterial = "";
+    this.novoId = "";
+
+    Swal.fire({
+      title: 'Tudo certo!',
+      text: 'Material atualizado com sucesso!',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonColor: '#5438dc',
+    });
+    this.modalService.dismissAll();
+  }
   
 
 
