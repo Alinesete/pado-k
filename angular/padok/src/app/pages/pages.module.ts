@@ -63,13 +63,18 @@ import { HistFuncionariosComponent } from './hist-funcionarios/hist-funcionarios
 import { HistFornecedoresComponent } from './hist-fornecedores/hist-fornecedores.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ProdutosComponent } from './produtos/produtos.component';
-import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { DropzoneModule, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MateriaisComponent } from './materiais/materiais.component';
 import { VendasComponent } from './vendas/vendas.component';
 
 
 
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  url: 'https://httpbin.org/post',
+  maxFilesize: 5
+};
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
