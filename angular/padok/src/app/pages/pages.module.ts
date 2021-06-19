@@ -63,7 +63,7 @@ import { HistFuncionariosComponent } from './hist-funcionarios/hist-funcionarios
 import { HistFornecedoresComponent } from './hist-fornecedores/hist-fornecedores.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ProdutosComponent } from './produtos/produtos.component';
-import { DropzoneModule, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { DropzoneModule, DropzoneConfigInterface, DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MateriaisComponent } from './materiais/materiais.component';
 import { VendasComponent } from './vendas/vendas.component';
@@ -176,6 +176,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    {
+      provide: DROPZONE_CONFIG,
+      useValue: DEFAULT_DROPZONE_CONFIG
     }
   ]
 })
