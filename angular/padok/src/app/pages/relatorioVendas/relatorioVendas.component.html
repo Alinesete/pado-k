@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="justify-content: center; justify-items: center; text-align: center; border-radius: 20px;">
+            <div class="card" style="border-radius: 20px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">DATA</th>
+                            <th scope="col">FUNCIONARIO</th>
+                            <th scope="col">CLIENTE</th>
+                            <th scope="col">PRODUTOS</th>
+                            <th scope="col">VALOR FINAL</th>
+                            <th scope="col">FORMA DE PAGAMENTO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let for of vendas; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{for.dataVenda}}</td>
+                            <td>{{for.nomeFuncionario}}</td>
+                            <td>{{for.nomeCliente}}</td>
+                            <td>{{for.nomeProduto}}</td>
+                            <td>{{for.valorFinalVenda}}</td>
+                            <td>{{for.formaPgtoVenda}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
