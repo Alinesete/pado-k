@@ -15,7 +15,6 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CalendarComponent } from './calendar/calendar.component';
 import { EmailModule } from './email/email.module';
 import { FormModule } from './form/form.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
@@ -80,7 +79,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-  declarations: [DashboardComponent, CalendarComponent, MateriaisComponent, FuncionariosComponent, FornecedoresComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent, VendasComponent],
+  declarations: [DashboardComponent, MateriaisComponent, FuncionariosComponent, FornecedoresComponent, HistFuncionariosComponent, HistFornecedoresComponent, ClientesComponent, ProdutosComponent, VendasComponent],
   imports: [
     CommonModule,
     FormsModule,

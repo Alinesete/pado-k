@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CalendarComponent } from './calendar/calendar.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { HistFornecedoresComponent } from './hist-fornecedores/hist-fornecedores.component';
@@ -13,7 +12,6 @@ import { VendasComponent } from './vendas/vendas.component';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent },
-    { path: 'calendar', component: CalendarComponent },
     { path: 'funcionarios', component: FuncionariosComponent },
     { path: 'fornecedores', component: FornecedoresComponent },
     { path: 'produtos', component: ProdutosComponent },
