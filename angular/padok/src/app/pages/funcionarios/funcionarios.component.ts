@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/firestore";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,8 +17,18 @@ export class FuncionariosComponent implements OnInit {
   public salFun: string;
   public funcionarios: Array<any>;
 
+  public novoAtvFuncionario: String;
+  public novoCpfFuncionario: String;
+  public novoEndFuncionario: String;
+  public novoFoneFuncionario: String;
+  public novoNomeFuncionario: String;
+  public novoSalFuncionario: String;
+  public novoFunFuncionario: String;
+  public novoId: string
+
   constructor(
     private db: AngularFirestore,
+    private modalService: NgbModal
   ) {
     this.funcionarios = new Array<any>();
     this.getFuncionario();
@@ -75,10 +86,62 @@ export class FuncionariosComponent implements OnInit {
       });
     }
 
+    
+  modalMenu(centerDataModal: any, fun) {
+    this.novoAtvFuncionario =  fun.atvFuncionario;
+    this.novoCpfFuncionario =  fun.cpfFuncionario;
+    this.novoEndFuncionario =  fun.endFuncionario;
+    this.novoFoneFuncionario =  fun.foneFuncionario;
+    this.novoNomeFuncionario =  fun.nomeFuncionario;
+    this.novoSalFuncionario =  fun.salFuncionario;
+    this.novoFunFuncionario = fun.funFuncionario;
+    this.novoId = fun.id;
+   
+    this.modalService.open(centerDataModal, { centered: true });
+  }
+
  public getFuncionario() {
     return this.db.collection("funcionarios").snapshotChanges();
   }
 
+  deletar(id){
+    this.db.collection("funcionarios").doc(id).delete();
+  }
+
+  EditarProduto(){
+    var newFun = {
+      atvFuncionario: this.novoAtvFuncionario,
+      cpfFuncionario: this.novoCpfFuncionario,
+      endFuncionario: this.novoEndFuncionario,
+      foneFuncionario: this.novoFoneFuncionario,
+      nomeFuncionario: this.novoNomeFuncionario,
+      salFuncionario: this.novoSalFuncionario,
+      funFuncionario: this.novoFunFuncionario,
+      id: this.novoId
+    }
+
+
+
+
+    this.db.collection("funcionarios").doc(this.novoId).set(newFun);
+    this.novoAtvFuncionario =  '';
+    this.novoCpfFuncionario =  '';
+    this.novoEndFuncionario =  '';
+    this.novoFoneFuncionario =  '';
+    this.novoNomeFuncionario =  '';
+    this.novoSalFuncionario =  '';
+    this.novoFunFuncionario = '';
+    this.novoId = '';
+
+    Swal.fire({
+      title: 'Tudo certo!',
+      text: 'Funcionário atualizado com sucesso!',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonColor: '#5438dc',
+    });
+    this.modalService.dismissAll();
+  }
 
 
 
