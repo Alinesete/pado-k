@@ -88,7 +88,7 @@ export class VendasComponent implements OnInit {
       id: date
     }
     this.db.collection("vendas").doc(date.toString()).set(compra);
-    this.totalProdutos = null;
+    this.totalProdutos = new Array<any>();
     this.totalPrecoProdutos = 0.0
     this.modalService.dismissAll();
     Swal.fire({
