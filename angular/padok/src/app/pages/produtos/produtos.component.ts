@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class ProdutosComponent implements OnInit {
   public nomeProduto: string;
   public descProduto: string;
-  public precoProduto: string;
+  public precoProduto: number;
   public qtdProduto: number;
   public produtos: Array<any>;
   public img: any;
