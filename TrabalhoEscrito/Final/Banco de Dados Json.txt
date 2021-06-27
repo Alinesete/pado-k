@@ -1,0 +1,89 @@
+{
+    "clientes" : {
+        "1624807136928" : {
+            "foneCliente" : "(11)11111-1111",
+            "id" : "1624807136928",
+            "nomeCliente" : "Souza Junior",
+            "regCliente" : "111-111-111-11",
+            "tipoCliente" : "Físico",
+        }
+    }
+
+    "fornecedores" : {
+        "1624807200257" : {
+            "atvFornecedor" : true,
+            "endFornecedor" : "Avenida Y",
+            "id" : "1624807200257",
+            "nomeFornecedor" : "LIA CRYSTAL",
+            "regFornecedor" : "000-0000-000/0000-00",
+        }
+    }
+
+    "historico_fornecedores" : {
+        "1624807200257" : {
+            "dataFim" : "Atual",
+            "dataIni" : "27/06/2021",
+            "id" : "1624807200257",
+            "nomeFornecedor" : "LIA CRYSTAL",
+        }
+    }
+
+    "funcionarios" : {
+        "1624807095174" : {
+            "atvFuncionario" : true,
+            "cpfFuncionario" : "000-000-000-00",
+            "endFuncionario" : "Rua X",
+            "foneFuncionario" : "(00)00000-0000",
+            "funFuncionario" : "Padeiro",
+            "id" : "1624807095174",
+            "nomeFuncionario" : "Junior Souza",
+            "salFuncionario" : "1800.00",
+        }
+    }
+
+    "historico_funcionarios" : {
+        "1624807095174" : {
+            "dataFim" : "Atual",
+            "dataIni" : "27/06/2021",
+            "id" : "1624807095174",
+            "nomeFuncionario" : "Junior Souza",
+        }
+    }
+
+    "materiais" : {
+        "1624806923979" : {
+            "descMaterial" : "Descrição",
+            "id" : "1624806923979",
+            "nomeMaterial" : "Material",
+            "qtdMaterial" : "3",
+        }
+    }
+
+    "produtos" : {
+        "1624086996266" : {
+            "descProduto" : "Descrição",
+            "id" : "1624086996266",
+            "imgProduto" : "url",
+            "nomeProduto" : "Produto",
+            "precoProduto" : "2.50",
+            "qtdProduto" : "3",
+        }
+    }
+
+    "vendas" : {
+        "1624807273264" : {
+            "dataVenda" : "27/06/2021",
+            "formaPgtoVenda" : "Dinheiro",
+            "id" : "1624807273264",
+            "idProduto" : {
+                "0" : {
+                    "id" : "1624086996266",
+                },
+            },
+            "nomeCliente" : "Souza Junior",
+            "nomeFuncionario" : "Junior Souza",
+            "valorFinalVenda" : "2.50",
+        }
+    }
+
+}
