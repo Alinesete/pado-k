@@ -1,5 +1,5 @@
 # Pado-k TCC
 
-> Angular
-> Firebase
-Bruh
+-> Angular<br>
+<s>-> Firebase</s><br>
+Database is closed
